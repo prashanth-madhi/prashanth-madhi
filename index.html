@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75">
     <title>Prashanth Madhi, P.Eng</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -47,19 +47,34 @@
     <!-- NAVBAR -->
     <nav class="sticky top-0 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 z-50">
         <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-3xl">P</div>
-                <h1 class="heading text-2xl tracking-tight">Prashanth Madhi, P.Eng 🇨🇦 🇮🇳  </h1>
+                 <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-yellow-500 rounded-2xl flex items-center justify-center text-white font-bold text-3xl">P</div>
+                <h1 class="heading text-2xl tracking-tight">Prashanth Madhi, P.Eng </h1>
             </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#home" class="nav-link">home</a>
-                <a href="#creative" class="nav-link">creative</a>
-                 <a href="#experience" class="nav-link">experience</a>
-                <a href="#ventures" class="nav-link">ventures</a>
+               <!-- Mobile menu button -->
+    <button id="menuBtn" class="md:hidden text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
 
-                <a href="#about" class="nav-link">about</a>
-            </div>
+    <!-- Desktop nav -->
+    <div class="hidden md:flex gap-6 text-sm text-slate-300">
+      <a href="#home" class="hover:text-white">home</a>
+      <a href="#creative" class="hover:text-white">creative</a>
+      <a href="#experience" class="hover:text-white">experience</a>
+      <a href="#ventures" class="hover:text-white">ventures</a>
+      <a href="#about" class="hover:text-white">about</a>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobileMenu" class="hidden px-4 pb-4 flex flex-col gap-3 md:hidden text-sm text-slate-300">
+    <a href="#home">home</a>
+    <a href="#creative">creative</a>
+    <a href="#experience">experience</a>
+    <a href="#ventures">ventures</a>
+    <a href="#about">about</a>
+  </div>
+</nav>
         </div>
     </nav>
 
@@ -69,12 +84,14 @@
     <div class="max-w-2xl">
     
     <!-- Hero Text with Gradient -->
-<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-snug">
-  Hi, I'm Prashanth 
-</h1>
-<p class="mt-3 text-lg md:text-xl lg:text-2xl text-gray-300 font-medium">
- ⚡ executioner • innovator • artsy • global connector ⚡ 
-</p>
+    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+      Hi, I'm Prashanth
+    </h1>
+
+    <p class="mt-4 text-base sm:text-lg md:text-xl text-gray-300">
+      ⚡ builder • innovator • creator • global connector
+    </p>
+
 
       <!-- Social Media -->
 <div class="mt-10 grid grid-cols-2 md:flex gap-x-10 gap-y-6">
@@ -117,45 +134,39 @@
       <span class="text-xs text-slate-400">55+</span>
     </div>
   </a>
-
-  <a href="https://www.facebook.com/prashanth.madhi" target="_blank" class="flex items-center gap-3 hover:text-blue-500">
-    <i class="fab fa-facebook text-3xl"></i>
-    <div class="flex flex-col">
-      <span class="font-medium">Facebook</span>
-      <span class="text-xs text-slate-400">1.5k+</span>
-    </div>
-  </a>
 </div>
 
-<!-- Action Buttons -->
-<div class="mt-10 flex flex-wrap gap-3">
-  <a href="#creative" class="inline-flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl text-sm">
-    <span class="w-6 h-6 flex items-center justify-center bg-blue-500 rounded-full text-xs">🎨</span>
+    <!-- Action Buttons (Mobile-first • Slick) -->
+<div class="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap gap-3 justify-center md:justify-start">
+
+  <a href="#creative" class="group flex items-center justify-center gap-2 px-4 py-3 bg-blue-600/90 hover:bg-blue-600 text-white rounded-xl text-xs sm:text-sm font-medium backdrop-blur transition-all duration-300">
+    <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">🎨</span>
     sparky
   </a>
-  <a href="#experience" class="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-2xl text-sm">
-    <span class="w-6 h-6 flex items-center justify-center bg-indigo-500 rounded-full text-xs">⚙️</span>
+
+  <a href="#experience" class="group flex items-center justify-center gap-2 px-4 py-3 bg-indigo-600/90 hover:bg-indigo-600 text-white rounded-xl text-xs sm:text-sm font-medium transition-all duration-300">
+    <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">⚙️</span>
     techy
   </a>
-  <!-- New Hustles Button -->
-  <a href="#ventures" class="inline-flex items-center gap-2 px-5 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-2xl text-sm">
-    <span class="w-6 h-6 flex items-center justify-center bg-amber-500 rounded-full text-xs">🔥</span>
-     quests
+
+  <a href="#ventures" class="group flex items-center justify-center gap-2 px-4 py-3 bg-amber-600/90 hover:bg-amber-600 text-white rounded-xl text-xs sm:text-sm font-medium transition-all duration-300">
+    <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">🔥</span>
+    quests
   </a>
-   <!-- Who's Prashanth Button -->
-  <a href="#about" class="inline-flex items-center gap-2 px-5 py-3 bg-pink-600 hover:bg-pink-700 text-white font-semibold rounded-2xl text-sm">
-    <span class="w-6 h-6 flex items-center justify-center bg-pink-500 rounded-full text-xs">🧑‍💻</span>
+
+  <a href="#about" class="group flex items-center justify-center gap-2 px-4 py-3 bg-pink-600/90 hover:bg-pink-600 text-white rounded-xl text-xs sm:text-sm font-medium transition-all duration-300">
+    <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">🧑‍💻</span>
     my story
   </a>
-  <a href="mailto:hi@prashanth.ca" class="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl text-sm">
-    <span class="w-6 h-6 flex items-center justify-center bg-emerald-500 rounded-full text-xs">✉️</span>
+
+  <a href="mailto:hi@prashanth.ca" class="group col-span-2 sm:col-span-1 flex items-center justify-center gap-2 px-4 py-3 bg-emerald-600/90 hover:bg-emerald-600 text-white rounded-xl text-xs sm:text-sm font-medium transition-all duration-300">
+    <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">✉️</span>
     ping me
   </a>
- 
+
 </div>
-            </div>
-        </div>
-    </section>
+  </div>
+</section
 
     <!-- CREATIVE -->
 <section id="creative" class="py-24 bg-slate-900">
@@ -407,6 +418,9 @@
         <p class="mt-6">I was born in Coimbatore, South India to a Telugu family, grew up in Queensland, Australia, and Guelph, Canada (Centennial CVI). I studied Electrical and Computer Engineering at the University of Waterloo and remain a proud alumnus and mentor. A world traveler and multipassionate creator, I explore technology, filmmaking, culture, and community impact.</p>
         <p class="mt-6">I’m an Indo-Canadian filmmaker, actor, and content creator. I’ve hosted live TV Show, Canadian Mosaic (AWAZ), acted and did casting direction in the short film Back to Normal, and frequently mentor and speak at universities.</p>
         <p class="mt-6">I would like to empower education with Professional Masterclass Academy (PMA), create memorable journeys with Travellite Pro, and give back through SickKids and Canadian Blood Services (<a href="https://www.blood.ca/en/mystory/birthday-donation-growing-community-donors" target="_blank" class="text-blue-400 hover:underline">see my story</a>).</p>
+
+        <p class="mt-6">Thanks for dropping in — let's connect wherever you prefer!</a></p>
+
         <p class="mt-6">Chao!</p>
       </div>
     </div>
@@ -416,7 +430,6 @@
 <!-- SOCIAL LINKS - BOTTOM -->
 <div class="bg-slate-900 py-12 border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-6 text-center">
-        <p class="text-slate-400 text-sm mb-6"> Thanks for dropping in — let's connect wherever you prefer!</p>
         <div class="flex justify-center gap-x-10 text-4xl">
 
             <!-- LinkedIn -->
@@ -477,7 +490,7 @@
     </div>
 
     <footer class="bg-black py-10 text-center text-xs text-slate-500">
-        © 2026 Prashanth Madhi • Building Ideas • Crafting Experiences • Inspiring Change
+        © 2026 Prashanth • Building Ideas • Crafting Experiences • Inspiring Change
     </footer>
 
     <script>
