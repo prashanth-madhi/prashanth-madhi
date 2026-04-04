@@ -2,79 +2,252 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prashanth Madhi, P.Eng</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
-        
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading { font-family: 'Space Grotesk', sans-serif; }
-        
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: 'DM Sans', system-ui, sans-serif; }
+        .heading { font-family: 'Syne', sans-serif; }
+
+        /* ── NAVBAR ── */
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-logo-ring {
+            background: conic-gradient(from 180deg, #3b82f6, #8b5cf6, #10b981, #3b82f6);
+            padding: 2px;
+            border-radius: 14px;
+        }
+        .nav-logo-inner {
+            background: #0f172a;
+            border-radius: 12px;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800; font-size: 1.2rem; color: #fff;
+        }
+        .nav-pill {
+            display: flex; align-items: center; gap: 2px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px;
+            padding: 4px 6px;
+        }
+        .nav-pill a {
+            font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;
+            color: rgba(203,213,225,0.85);
+            padding: 6px 14px; border-radius: 100px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-pill a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+        .nav-cta {
+            font-size: 0.78rem; font-weight: 600;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: #fff; padding: 8px 18px;
+            border-radius: 100px; white-space: nowrap;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* mobile menu */
+        #mobileMenu {
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+            padding: 8px 16px 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        #mobileMenu.open { display: flex; }
+        #mobileMenu a {
+            font-size: 0.9rem; font-weight: 500; color: rgba(203,213,225,0.85);
+            padding: 10px 14px; border-radius: 10px;
+            transition: background 0.15s;
+        }
+        #mobileMenu a:hover { background: rgba(255,255,255,0.07); color: #fff; }
+
+        /* ── HERO ── */
         .hero-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #166534 100%);
-        }
-        
-        .nav-link {
+            background: #0b1120;
             position: relative;
+            overflow: hidden;
         }
-        .nav-link:after {
+        .hero-bg::before {
             content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(to right, #3b82f6, #8b5cf6, #10b981);
-            transition: width 0.3s ease;
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 50%, rgba(30,58,138,0.55) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 50% at 90% 20%, rgba(16,185,129,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(139,92,246,0.12) 0%, transparent 55%);
+            pointer-events: none;
         }
-        .nav-link:hover:after { width: 100%; }
-        
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse 80% 70% at 20% 50%, black 0%, transparent 75%);
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: #93c5fd; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+            padding: 6px 14px; border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(59,130,246,0.25); }
+            50% { box-shadow: 0 0 0 6px rgba(59,130,246,0.1); }
+        }
+        .hero-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-tagline {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+            margin-top: 1.25rem;
+        }
+        .hero-tag {
+            font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+            padding: 4px 12px; border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(203,213,225,0.75);
+        }
+        .hero-divider {
+            width: 1px; height: 14px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* social links in hero */
+        .hero-social-row {
+            display: flex; flex-wrap: wrap; gap: 12px;
+            margin-top: 2.5rem;
+        }
+        .hero-social {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 16px; border-radius: 14px;
+            color: rgba(203,213,225,0.85);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            min-width: 130px;
+        }
+        .hero-social:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.18);
+            color: #fff; transform: translateY(-2px);
+        }
+        .hero-social i { font-size: 1.2rem; }
+        .hero-social-name { font-size: 0.85rem; font-weight: 500; }
+        .hero-social-count { font-size: 0.72rem; color: rgba(148,163,184,0.7); }
+
+        /* CTA buttons */
+        .hero-btns {
+            display: flex; flex-wrap: wrap; gap: 10px;
+            margin-top: 2rem;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 600;
+            padding: 11px 20px; border-radius: 12px;
+            text-decoration: none; transition: all 0.2s ease;
+            color: #fff;
+        }
+        .btn-primary .btn-icon {
+            width: 22px; height: 22px; border-radius: 8px;
+            background: rgba(255,255,255,0.18);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem;
+        }
+        .btn-blue   { background: linear-gradient(135deg, #2563eb, #4f46e5); }
+        .btn-indigo { background: linear-gradient(135deg, #4338ca, #6d28d9); }
+        .btn-amber  { background: linear-gradient(135deg, #d97706, #b45309); }
+        .btn-pink   { background: linear-gradient(135deg, #db2777, #9d174d); }
+        .btn-emerald{ background: linear-gradient(135deg, #059669, #047857); }
+        .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        /* ── REST ── */
+        .section-title { position: relative; }
         .section-title:after {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 3px;
+            width: 40px; height: 3px;
             background: linear-gradient(to right, #3b82f6, #8b5cf6, #10b981);
-            bottom: -10px;
-            left: 0;
+            bottom: -10px; left: 0;
         }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200">
 
     <!-- NAVBAR -->
-    <nav class="sticky top-0 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-                 <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-yellow-500 rounded-2xl flex items-center justify-center text-white font-bold text-3xl">P</div>
-                <h1 class="heading text-2xl tracking-tight">Prashanth Madhi, P.Eng </h1>
+    <nav class="nav-glass sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 text-decoration-none flex-shrink-0">
+                <div class="nav-logo-ring">
+                    <div class="nav-logo-inner">P</div>
+                </div>
+                <span class="heading text-white font-semibold text-base hidden sm:block tracking-tight">Prashanth Madhi <span class="text-slate-400 font-normal">P.Eng</span></span>
+            </a>
+
+            <!-- Desktop pill nav -->
+            <div class="hidden md:flex nav-pill">
+                <a href="#home">home</a>
+                <a href="#creative">creative</a>
+                <a href="#experience">experience</a>
+                <a href="#ventures">ventures</a>
+                <a href="#about">about</a>
             </div>
-               <!-- Mobile menu button -->
-    <button id="menuBtn" class="md:hidden text-xl">
-      <i class="fas fa-bars"></i>
-    </button>
 
-    <!-- Desktop nav -->
-    <div class="hidden md:flex gap-6 text-sm text-slate-300">
-      <a href="#home" class="hover:text-white">home</a>
-      <a href="#creative" class="hover:text-white">creative</a>
-      <a href="#experience" class="hover:text-white">experience</a>
-      <a href="#ventures" class="hover:text-white">ventures</a>
-      <a href="#about" class="hover:text-white">about</a>
-    </div>
-  </div>
+            <!-- Right side -->
+            <div class="flex items-center gap-3">
+                <a href="tel:+16473854770" class="nav-cta hidden sm:block">ping me</a>
+                <!-- Mobile hamburger -->
+                <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition" aria-label="Menu">
+                    <span class="block w-5 h-0.5 bg-slate-300 transition-all" id="bar1"></span>
+                    <span class="block w-5 h-0.5 bg-slate-300 transition-all" id="bar2"></span>
+                    <span class="block w-3 h-0.5 bg-slate-300 transition-all" id="bar3"></span>
+                </button>
+            </div>
+        </div>
 
-  <!-- Mobile dropdown -->
-  <div id="mobileMenu" class="hidden px-4 pb-4 flex flex-col gap-3 md:hidden text-sm text-slate-300">
-    <a href="#home">home</a>
-    <a href="#creative">creative</a>
-    <a href="#experience">experience</a>
-    <a href="#ventures">ventures</a>
-    <a href="#about">about</a>
-  </div>
-</nav>
+        <!-- Mobile dropdown -->
+        <div id="mobileMenu">
+            <a href="#home">home</a>
+            <a href="#creative">creative</a>
+            <a href="#experience">experience</a>
+            <a href="#ventures">ventures</a>
+            <a href="#about">about</a>
+            <a href="#about" style="color:#93c5fd; margin-top:4px;">ping me →</a>
         </div>
     </nav>
 
@@ -88,9 +261,16 @@
       Hi, I'm Prashanth
     </h1>
 
-    <p class="mt-4 text-base sm:text-lg md:text-xl text-gray-300">
-      ⚡ builder • innovator • creator • global connector
-    </p>
+            <!-- Tags -->
+            <div class="hero-tagline">
+                <span class="hero-tag">⚡ builder</span>
+                <span class="hero-divider"></span>
+                <span class="hero-tag">🎬 creator</span>
+                <span class="hero-divider"></span>
+                <span class="hero-tag">🌍 connector</span>
+                <span class="hero-divider"></span>
+                <span class="hero-tag">🚀 innovator</span>
+            </div>
 
 
       <!-- Social Media -->
@@ -123,7 +303,7 @@
     <i class="fab fa-imdb text-3xl"></i>
     <div class="flex flex-col">
       <span class="font-medium">IMDb</span>
-      <span class="text-xs text-slate-400">–</span>
+      <span class="text-xs text-slate-400">Actor </span>
     </div>
   </a>
 
@@ -161,7 +341,7 @@
 
   <a href="mailto:hi@prashanth.ca" class="group col-span-2 sm:col-span-1 flex items-center justify-center gap-2 px-4 py-3 bg-emerald-600/90 hover:bg-emerald-600 text-white rounded-xl text-xs sm:text-sm font-medium transition-all duration-300">
     <span class="w-5 h-5 flex items-center justify-center bg-white/20 rounded-full text-[10px]">✉️</span>
-    ping me
+    get in touch
   </a>
 
 </div>
